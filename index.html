@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- <i class="fas fa-band-aid"></i> -->
+        <div class="signin">
+            <h1>Welcome back</h1><br>
+            <p style="font-size: 14px;color: gray; margin-top: -20px;">Welcome back! Please enter your details</p><br>
+            <form class="details" action="/secondPage.html" target="_blank" method="post">
+                <label for="email" style="text-align: left;">Email</label><br><br>
+                <input type="email" class="box email" placeholder="Enter your email" id="email" autocomplete="on">
+                <br>
+                <p id="invalidMail"></p>
+                <br>
+                <label for="password">Password</label>
+                <br><br>
+                <input type="password" id="password" class="box password" placeholder="*************"><br>
+                <p id="invalidPw"></p>
+                <br>
+                <div class="fp">
+                    <input type="checkbox">
+                    <label>Remember for 30 days</label>
+                    <a href="" style="float: right;text-decoration: none;font-size: small;">Forgot password</a>
+                </div>
+                <br><br>
+                <button class="button" onclick="signup()" style="margin-top: -20px;">Signin</button>
+                <button class="button" id="b1">
+                    <img src="googleLogo.jfif" class="googleLogo" alt="">
+                    Sign up with google
+                </button>
+                <p style="display:inline-block; padding-left: 45px; font-size: small; color: gray;">Don't have an
+                    account?</p>
+                <a href="#" style="text-decoration: none; font-size: small;">Sign up</a>
+            </form>
+        </div>
+
+        <div>
+            <img src="image.jfif" class="rightImage" alt="">
+        </div>
+    </div>
+
+    <script>
+
+        function signup() {
+            event.preventDefault();
+
+            let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+           
+
+            let email = "abc@gmail.com";
+            let pw = "1234";
+            let mail = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            if (mail == "") {
+                let text = "Enter mail id";
+                document.getElementById("invalidMail").innerHTML = text;
+                return false;
+            }
+            else if (!emailRegex.test(mail)) {
+                let text = "Enter a valid email address";
+                document.getElementById("invalidMail").innerHTML = text;
+                return false;
+            }
+            else if (password == "") {
+                let text = "Enter password";
+                document.getElementById("invalidPw").innerHTML = text;
+                return false;
+            }
+            else if (mail === email && password === pw) {
+                location.href = "secondPage.html";
+            }
+            else if (mail !== email && password !== pw) {
+                alert("Please Enter valid mailid and password")
+            }
+            
+        }
+    </script>
+</body>
+
+</html>
